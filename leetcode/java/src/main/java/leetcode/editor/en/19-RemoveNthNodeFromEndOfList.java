@@ -64,7 +64,21 @@
  */
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        
+        ListNode p1 = head;
+        for (int i = 0; i < n; i++) {
+            p1 = p1.next;
+        }
+
+        ListNode p2 = head;
+        while (p1.next != null) {
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+
+        ListNode nodeNthFromEnd = p2.next;
+        p2.next = nodeNthFromEnd.next;
+
+        return head;
     }
 }
 // @lc code=end
