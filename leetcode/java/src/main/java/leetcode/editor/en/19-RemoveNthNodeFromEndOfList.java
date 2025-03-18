@@ -69,6 +69,10 @@ class Solution {
             p1 = p1.next;
         }
 
+        if (p1 == null) {
+            return head.next;
+        }
+
         ListNode p2 = head;
         while (p1.next != null) {
             p1 = p1.next;
