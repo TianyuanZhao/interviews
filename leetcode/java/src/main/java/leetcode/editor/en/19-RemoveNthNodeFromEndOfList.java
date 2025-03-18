@@ -115,8 +115,21 @@ class Solution {
 //         x.next = x.next.next;
 //         return dummy.next;
 //     }
-        
+
+//     // 返回链表的倒数第 k 个节点
 //     private ListNode findFromEnd(ListNode head, int k) {
-//         // 代码见上文
+//         ListNode p1 = head;
+//         // p1 先走 k 步
+//         for (int i = 0; i < k; i++) {
+//             p1 = p1.next;
+//         }
+//         ListNode p2 = head;
+//         // p1 和 p2 同时走 n - k 步
+//         while (p1 != null) {
+//             p2 = p2.next;
+//             p1 = p1.next;
+//         }
+//         // p2 现在指向第 n - k + 1 个节点，即倒数第 k 个节点
+//         return p2;
 //     }
 // }
