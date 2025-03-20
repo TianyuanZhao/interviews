@@ -1,15 +1,15 @@
 /*
  * @lc app=leetcode id=876 lang=java
- * @lcpr version=30103
+ * @lcpr version=30104
  *
  * [876] Middle of the Linked List
  *
  * https://leetcode.com/problems/middle-of-the-linked-list/description/
  *
  * algorithms
- * Easy (80.17%)
- * Likes:    12266
- * Dislikes: 395
+ * Easy (80.18%)
+ * Likes:    12272
+ * Dislikes: 396
  * Total Accepted:    2.4M
  * Total Submissions: 2.9M
  * Testcase Example:  '[1,2,3,4,5]'
@@ -45,33 +45,47 @@
  * 
  */
 
-// @lc code=start
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
-class Solution {
-    public ListNode middleNode(ListNode head) {
-        ListNode dummy = new ListNode(-1);
-        dummy.next = head;
-        ListNode slow = dummy;
-        ListNode fast = dummy;
-        while (fast != null) {
-            slow = slow.next;
-            fast = fast.next;
-            if (fast != null) fast = fast.next;
-        }
+package leetcode.editor.en;
 
-        return slow;
+import java.util.*;
+import leetcode.editor.common.*;
+
+public class MiddleOfTheLinkedList {
+
+    // @lc code=start
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     *     int val;
+     *     ListNode next;
+     *     ListNode() {}
+     *     ListNode(int val) { this.val = val; }
+     *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     * }
+     */
+    class Solution {
+        public ListNode middleNode(ListNode head) {
+            ListNode dummy = new ListNode(-1);
+            dummy.next = head;
+            ListNode slow = dummy;
+            ListNode fast = dummy;
+            while (fast != null) {
+                slow = slow.next;
+                fast = fast.next;
+                if (fast != null) fast = fast.next;
+            }
+    
+            return slow;
+        }
+    }
+    // @lc code=end
+    
+    public static void main(String[] args) {
+        Solution solution = new MiddleOfTheLinkedList().new Solution();
+        // put your test code here
+        
     }
 }
-// @lc code=end
 
 
 

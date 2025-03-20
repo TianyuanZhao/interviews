@@ -1,14 +1,14 @@
 /*
  * @lc app=leetcode id=19 lang=java
- * @lcpr version=30103
+ * @lcpr version=30104
  *
  * [19] Remove Nth Node From End of List
  *
  * https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/
  *
  * algorithms
- * Medium (48.20%)
- * Likes:    19729
+ * Medium (48.22%)
+ * Likes:    19737
  * Dislikes: 845
  * Total Accepted:    3.3M
  * Total Submissions: 6.9M
@@ -51,41 +51,55 @@
  * 
  */
 
-// @lc code=start
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
-class Solution {
-    public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode p1 = head;
-        for (int i = 0; i < n; i++) {
-            p1 = p1.next;
+package leetcode.editor.en;
+
+import java.util.*;
+import leetcode.editor.common.*;
+
+public class RemoveNthNodeFromEndOfList {
+
+    // @lc code=start
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     *     int val;
+     *     ListNode next;
+     *     ListNode() {}
+     *     ListNode(int val) { this.val = val; }
+     *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     * }
+     */
+    class Solution {
+        public ListNode removeNthFromEnd(ListNode head, int n) {
+            ListNode p1 = head;
+            for (int i = 0; i < n; i++) {
+                p1 = p1.next;
+            }
+    
+            if (p1 == null) {
+                return head.next;
+            }
+    
+            ListNode p2 = head;
+            while (p1.next != null) {
+                p1 = p1.next;
+                p2 = p2.next;
+            }
+    
+            ListNode nodeNthFromEnd = p2.next;
+            p2.next = nodeNthFromEnd.next;
+    
+            return head;
         }
-
-        if (p1 == null) {
-            return head.next;
-        }
-
-        ListNode p2 = head;
-        while (p1.next != null) {
-            p1 = p1.next;
-            p2 = p2.next;
-        }
-
-        ListNode nodeNthFromEnd = p2.next;
-        p2.next = nodeNthFromEnd.next;
-
-        return head;
+    }
+    // @lc code=end
+    
+    public static void main(String[] args) {
+        Solution solution = new RemoveNthNodeFromEndOfList().new Solution();
+        // put your test code here
+        
     }
 }
-// @lc code=end
 
 
 
@@ -103,18 +117,6 @@ class Solution {
 // @lcpr case=end
 
  */
-
-//  class Solution {
-//     public ListNode removeNthFromEnd(ListNode head, int n) {
-//         // 虚拟头结点
-//         ListNode dummy = new ListNode(-1);
-//         dummy.next = head;
-//         // 删除倒数第 n 个，要先找倒数第 n + 1 个节点
-//         ListNode x = findFromEnd(dummy, n + 1);
-//         // 删掉倒数第 n 个节点
-//         x.next = x.next.next;
-//         return dummy.next;
-//     }
 
 //     // 返回链表的倒数第 k 个节点
 //     private ListNode findFromEnd(ListNode head, int k) {

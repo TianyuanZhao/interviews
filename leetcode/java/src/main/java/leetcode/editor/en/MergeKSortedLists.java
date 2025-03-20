@@ -1,14 +1,14 @@
 /*
  * @lc app=leetcode id=23 lang=java
- * @lcpr version=30103
+ * @lcpr version=30104
  *
  * [23] Merge k Sorted Lists
  *
  * https://leetcode.com/problems/merge-k-sorted-lists/description/
  *
  * algorithms
- * Hard (55.91%)
- * Likes:    20152
+ * Hard (55.93%)
+ * Likes:    20164
  * Dislikes: 745
  * Total Accepted:    2.4M
  * Total Submissions: 4.3M
@@ -60,44 +60,58 @@
  * 
  */
 
-// @lc code=start
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
-class Solution {
-    public ListNode mergeKLists(ListNode[] lists) {
-        ListNode dummy = new ListNode(-1), p = dummy;
-        Comparator<ListNode> nodeComparator = new Comparator<ListNode>() {
-            public int compare(ListNode a, ListNode b) {
-                return a.val - b.val;
-            }
-        };
-        PriorityQueue<ListNode> queue = new PriorityQueue<>(10^4, nodeComparator);
-        for (ListNode list : lists) {
-            while(list != null) {
-                ListNode temp = list.next;
-                list.next = null;
-                queue.add(list);
-                list = temp;
-            }
-        }
+package leetcode.editor.en;
 
-        while (!queue.isEmpty()) {
-            p.next = queue.poll();
-            p = p.next;
-        }
+import java.util.*;
+import leetcode.editor.common.*;
 
-        return dummy.next;
+public class MergeKSortedLists {
+
+    // @lc code=start
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     *     int val;
+     *     ListNode next;
+     *     ListNode() {}
+     *     ListNode(int val) { this.val = val; }
+     *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     * }
+     */
+    class Solution {
+        public ListNode mergeKLists(ListNode[] lists) {
+            ListNode dummy = new ListNode(-1), p = dummy;
+            Comparator<ListNode> nodeComparator = new Comparator<ListNode>() {
+                public int compare(ListNode a, ListNode b) {
+                    return a.val - b.val;
+                }
+            };
+            PriorityQueue<ListNode> queue = new PriorityQueue<>(10^4, nodeComparator);
+            for (ListNode list : lists) {
+                while(list != null) {
+                    ListNode temp = list.next;
+                    list.next = null;
+                    queue.add(list);
+                    list = temp;
+                }
+            }
+    
+            while (!queue.isEmpty()) {
+                p.next = queue.poll();
+                p = p.next;
+            }
+    
+            return dummy.next;
+        }
+    }
+    // @lc code=end
+    
+    public static void main(String[] args) {
+        Solution solution = new MergeKSortedLists().new Solution();
+        // put your test code here
+        
     }
 }
-// @lc code=end
 
 
 
